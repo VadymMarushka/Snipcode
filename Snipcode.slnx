@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Snipcode.Core/Snipcode.Core.csproj" />
+  <Project Path="Snipcode.Data/Snipcode.Data.csproj" />
+  <Project Path="Snipcode.WPF/Snipcode.WPF.csproj" />
+</Solution>
