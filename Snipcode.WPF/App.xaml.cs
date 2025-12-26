@@ -5,6 +5,7 @@ using Snipcode.Core.Entities;
 using Snipcode.Data;
 using Snipcode.Data.Interfaces;
 using Snipcode.Data.Services;
+using Snipcode.WPF.MVVM.ViewModels;
 using System.Configuration;
 using System.Data;
 using System.IO;
@@ -31,7 +32,7 @@ namespace Snipcode.WPF
                     services.AddDbContextFactory<SnipcodeContext>(options =>
                         options.UseSqlite($"Data Source={dbPath}"));
                     services.AddTransient<ISnipcodeDataService, SnipcodeDataService>();
-                    services.AddTransient<ViewModels.MainViewModel>();
+                    services.AddTransient<MainViewModel>();
                 })
                 .Build();
         }

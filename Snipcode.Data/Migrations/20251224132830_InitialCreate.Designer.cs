@@ -11,7 +11,7 @@ using Snipcode.Data;
 namespace Snipcode.Data.Migrations
 {
     [DbContext(typeof(SnipcodeContext))]
-    [Migration("20251222195328_InitialCreate")]
+    [Migration("20251224132830_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace Snipcode.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.1");
 
-            modelBuilder.Entity("Snipcode.Core.Category", b =>
+            modelBuilder.Entity("Snipcode.Core.Entities.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace Snipcode.Data.Migrations
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("Snipcode.Core.Snippet", b =>
+            modelBuilder.Entity("Snipcode.Core.Entities.Snippet", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,6 +55,12 @@ namespace Snipcode.Data.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<DateTime?>("LastAccessed")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("Technology")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -66,7 +72,7 @@ namespace Snipcode.Data.Migrations
                     b.ToTable("Snippets");
                 });
 
-            modelBuilder.Entity("Snipcode.Core.Tag", b =>
+            modelBuilder.Entity("Snipcode.Core.Entities.Tag", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -96,9 +102,9 @@ namespace Snipcode.Data.Migrations
                     b.ToTable("SnippetTags", (string)null);
                 });
 
-            modelBuilder.Entity("Snipcode.Core.Snippet", b =>
+            modelBuilder.Entity("Snipcode.Core.Entities.Snippet", b =>
                 {
-                    b.HasOne("Snipcode.Core.Category", "Category")
+                    b.HasOne("Snipcode.Core.Entities.Category", "Category")
                         .WithMany("Snippets")
                         .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -109,20 +115,20 @@ namespace Snipcode.Data.Migrations
 
             modelBuilder.Entity("SnippetTag", b =>
                 {
-                    b.HasOne("Snipcode.Core.Snippet", null)
+                    b.HasOne("Snipcode.Core.Entities.Snippet", null)
                         .WithMany()
                         .HasForeignKey("SnippetsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Snipcode.Core.Tag", null)
+                    b.HasOne("Snipcode.Core.Entities.Tag", null)
                         .WithMany()
                         .HasForeignKey("TagsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Snipcode.Core.Category", b =>
+            modelBuilder.Entity("Snipcode.Core.Entities.Category", b =>
                 {
                     b.Navigation("Snippets");
                 });

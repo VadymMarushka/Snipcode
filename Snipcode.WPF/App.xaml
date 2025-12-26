@@ -1,8 +1,28 @@
 ﻿<Application x:Class="Snipcode.WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Snipcode.WPF">
+             xmlns:local="clr-namespace:Snipcode.WPF"
+             xmlns:ViewModel="clr-namespace:Snipcode.WPF.MVVM.ViewModels"
+             xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+             xmlns:view="clr-namespace:Snipcode.WPF.MVVM.Views">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ui:ThemesDictionary Theme="Dark" />
+                <ui:ControlsDictionary />
+            </ResourceDictionary.MergedDictionaries>
+            <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
+                <view:DashboardView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModel:EditorViewModel}">
+                <view:EditorView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModel:OpenViewModel}">
+                <view:OpenView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModel:ReadViewModel}">
+                <view:ReadView/>
+            </DataTemplate>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

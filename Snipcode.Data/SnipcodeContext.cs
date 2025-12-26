@@ -13,14 +13,14 @@ namespace Snipcode.Data
         // Тут я описую зв'язки між сутностями
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Налаштування зв'язку Один-до-Багатьох (Category - Snippets)
+            // Налаштування зв'язку Один-до-Багатьох (Category --- Snippets)
             modelBuilder.Entity<Snippet>()
                 .HasOne(s => s.Category)
                 .WithMany(c => c.Snippets)
                 .HasForeignKey(s => s.CategoryId)
                 .OnDelete(DeleteBehavior.Cascade); // Якщо видалити категорію, видаляться і сніпети
 
-            // Налаштування зв'язку Багато-до-Багатьох (Snippet <-> Tags)
+            // Налаштування зв'язку Багато-до-Багатьох (Snippet --- Tags)
             modelBuilder.Entity<Snippet>()
                 .HasMany(s => s.Tags)
                 .WithMany(t => t.Snippets)

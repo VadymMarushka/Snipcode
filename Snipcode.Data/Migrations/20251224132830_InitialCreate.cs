@@ -47,6 +47,8 @@ namespace Snipcode.Data.Migrations
                     Description = table.Column<string>(type: "TEXT", nullable: false),
                     Code = table.Column<string>(type: "TEXT", nullable: false),
                     CreatedAt = table.Column<DateOnly>(type: "TEXT", nullable: false),
+                    LastAccessed = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    Technology = table.Column<int>(type: "INTEGER", nullable: false),
                     CategoryId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>

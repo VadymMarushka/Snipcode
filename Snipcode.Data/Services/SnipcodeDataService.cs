@@ -15,10 +15,6 @@ namespace Snipcode.Data.Services
         {
             _contextFactory = contextFactory;
         }
-        public void ShowLifeSigns()
-        {
-            throw new Exception();
-        }
         // CREATE
         public async Task AddSnippetAsync(Snippet snippet)
         {
@@ -33,11 +29,41 @@ namespace Snipcode.Data.Services
             using var context = await _contextFactory.CreateDbContextAsync();
             return await context.Snippets
                 .Include(s => s.Category) // відбувається через описаний у SnipetContext OnModelCreating зв'язок
-                .Include(s => s.Tags) // аналогічно підтягне теги
+                .Include(s => s.Tags) // аналогічно підтягне теги через ту проміжну таблицю в БД
                 .AsNoTracking() // Ця штука покращує продуктивність при читанні, коли не планується оновлення
+                                // EF core за замовчуванням відстежує зміни у завантажених сутностях, що додає накладні витрати
+                .ToListAsync(); // Зводжу ло списку
+        }
+        public async Task<Snippet?> GetSnippetByIdAsync(int id)
+        {
+            using var context = await _contextFactory.CreateDbContextAsync();
+
+            var snippet = await context.Snippets
+                .Include(s => s.Category)
+                .Include(s => s.Tags)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (snippet != null)
+            {
+                snippet.LastAccessed = DateTime.Now;
+                await context.SaveChangesAsync();
+            }
+
+            return snippet;
+        }
+        // Get Recently Opened Snippets
+        public async Task<List<Snippet>> GetRecentlyOpenedAsync(int count = 10)
+        {
+            using var context = await _contextFactory.CreateDbContextAsync();
+
+            return await context.Snippets
+                .Where(s => s.LastAccessed != null)       // Тільки ті, що відкривались
+                .OrderByDescending(s => s.LastAccessed)   // Спочатку найновіші
+                .Take(count)                              // Беремо перші 10
+                .Include(s => s.Category)
+                .AsNoTracking()
                 .ToListAsync();
         }
-
         // UPDATE
         public async Task UpdateSnippetAsync(Snippet snippet)
         {
