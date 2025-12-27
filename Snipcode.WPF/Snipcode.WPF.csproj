@@ -58,6 +58,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Resources\TechnologyIcons\cPlusPlus.png" />
+    <None Remove="Resources\TechnologyIcons\cSharp.png" />
+    <None Remove="Resources\TechnologyIcons\html.png" />
+    <None Remove="Resources\TechnologyIcons\javaScript.png" />
+    <None Remove="Resources\TechnologyIcons\python.png" />
+    <None Remove="Resources\TechnologyIcons\terminal.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -76,7 +85,27 @@
 
   <ItemGroup>
     <Folder Include="MVVM\Model\" />
-    <Folder Include="Resources\Icons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\TechnologyIcons\cPlusPlus.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TechnologyIcons\cSharp.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TechnologyIcons\html.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TechnologyIcons\javaScript.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TechnologyIcons\python.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\TechnologyIcons\terminal.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
