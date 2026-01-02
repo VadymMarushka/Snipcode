@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Snipcode.Core.Entities;
+using Snipcode.WPF.MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snipcode.WPF.MVVM.Views
+namespace Snipcode.WPF.MVVM.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for ReadView.xaml
+    /// Interaction logic for SnippetView.xaml
     /// </summary>
-    public partial class ReadView : UserControl
+    public partial class SnippetView : UserControl
     {
-        public ReadView()
+        public SnippetView(Snippet snippet, DashboardViewModel viewModel)
         {
             InitializeComponent();
         }

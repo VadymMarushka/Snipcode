@@ -12,18 +12,6 @@
                 <ui:ControlsDictionary />
                 <ResourceDictionary Source="/Resources/Transitions.xaml"/>
             </ResourceDictionary.MergedDictionaries>
-            <DataTemplate DataType="{x:Type ViewModel:DashboardViewModel}">
-                <view:DashboardView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type ViewModel:EditorViewModel}">
-                <view:EditorView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type ViewModel:OpenViewModel}">
-                <view:OpenView/>
-            </DataTemplate>
-            <DataTemplate DataType="{x:Type ViewModel:ReadViewModel}">
-                <view:ReadView/>
-            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

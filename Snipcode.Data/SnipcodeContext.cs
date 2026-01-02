@@ -10,6 +10,7 @@ namespace Snipcode.Data
         public DbSet<Category> Categories { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public SnipcodeContext(DbContextOptions<SnipcodeContext> options) : base(options) { }
+
         // Тут я описую зв'язки між сутностями
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snipcode.WPF.MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -11,14 +12,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Snipcode.WPF.MVVM.Views
+namespace Snipcode.WPF.MVVM.Views.UserControls
 {
     /// <summary>
-    /// Interaction logic for OpenView.xaml
+    /// Interaction logic for StarterView.xaml
     /// </summary>
-    public partial class OpenView : UserControl
+    public partial class StarterView : UserControl
     {
-        public OpenView()
+        public StarterView(DashboardViewModel viewModel)
         {
             InitializeComponent();
         }

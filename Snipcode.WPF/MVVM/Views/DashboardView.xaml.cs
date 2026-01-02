@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Snipcode.WPF.MVVM.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -10,6 +11,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Wpf.Ui.Abstractions.Controls;
+using Wpf.Ui;
 
 namespace Snipcode.WPF.MVVM.Views
 {
@@ -18,8 +21,9 @@ namespace Snipcode.WPF.MVVM.Views
     /// </summary>
     public partial class DashboardView : UserControl
     {
-        public DashboardView()
+        public DashboardView(DashboardViewModel viewModel)
         {
+            DataContext = viewModel;
             InitializeComponent();
         }
     }

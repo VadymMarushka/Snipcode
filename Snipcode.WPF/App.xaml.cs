@@ -6,10 +6,13 @@ using Snipcode.Data;
 using Snipcode.Data.Interfaces;
 using Snipcode.Data.Services;
 using Snipcode.WPF.MVVM.ViewModels;
+using Snipcode.WPF.MVVM.Views;
 using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Windows;
+using Wpf.Ui;
+using Wpf.Ui.DependencyInjection;
 
 namespace Snipcode.WPF
 {
@@ -32,7 +35,15 @@ namespace Snipcode.WPF
                     services.AddDbContextFactory<SnipcodeContext>(options =>
                         options.UseSqlite($"Data Source={dbPath}"));
                     services.AddTransient<ISnipcodeDataService, SnipcodeDataService>();
-                    services.AddTransient<MainViewModel>();
+
+                    services.AddSingleton<INavigationService, NavigationService>();
+                    services.AddNavigationViewPageProvider();
+
+                    services.AddSingleton<MainViewModel>();
+                    services.AddSingleton<DashboardViewModel>();
+
+                    services.AddTransient<DashboardView>();
+                    services.AddTransient<SettingsView>();
                 })
                 .Build();
         }

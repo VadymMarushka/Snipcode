@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace Snipcode.WPF.MVVM.Views
 {
     /// <summary>
-    /// Interaction logic for EditView.xaml
+    /// Interaction logic for SettingsView.xaml
     /// </summary>
-    public partial class EditorView : UserControl
+    public partial class SettingsView : UserControl
     {
-        public EditorView()
+        public SettingsView()
         {
             InitializeComponent();
         }
